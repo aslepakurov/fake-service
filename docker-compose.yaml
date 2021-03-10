@@ -18,8 +18,8 @@ services:
       - fake-service
     volumes:
       - ./:/data
-  test:
-    container_name: test
-    build:
-      context: ./
-      dockerfile: ./Dockerfile.test
+#  test:
+#    container_name: test
+#    build:
+#      context: ./
+#      dockerfile: ./Dockerfile.test
