@@ -1,0 +1,25 @@
+version: '2'
+services:
+  fake-service:
+    container_name: fake
+    build: ./
+    expose:
+     - 8000
+  satellite:
+    container_name: satellite
+    image: verygood/satellite
+    environment:
+      SATELLITE_ROUTES_PATH: "/data/route-configuration.yaml"
+    ports:
+      - 8089:8089
+      - 9098:9098
+      - 9099:9099
+    depends_on:
+      - fake-service
+    volumes:
+      - ./:/data
+  test:
+    container_name: test
+    build:
+      context: ./
+      dockerfile: ./Dockerfile.test

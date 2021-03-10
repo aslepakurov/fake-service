@@ -10,4 +10,5 @@ async def health():
 
 @app.post("/payload")
 async def payload(request: Request):
-    return request.body()
+    body_str = await request.body()
+    return str(body_str.decode("UTF-8"))
