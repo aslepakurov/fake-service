@@ -20,7 +20,7 @@ jobs:
             docker-compose build
             docker-compose up -d fake-service
             docker-compose up -d satellite
-            sleep 10
+            sleep 5
             ./test.sh
 
 workflows:
