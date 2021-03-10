@@ -13,7 +13,7 @@ data:
                   operator: matches
                   type: string
                   values:
-                    - /payload1
+                    - /payload
           id: 9d0805ac-1880-4e06-b18f-950a88465663
           operation: REDACT
           operations: null
