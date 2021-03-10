@@ -1,0 +1,29 @@
+job-defaults: &job-defaults
+  working_directory:
+    ~/fake-service
+
+version: 2
+jobs:
+  test:
+    machine:
+      image: circleci/classic:201808-01
+    <<: *job-defaults
+    steps:
+      - checkout
+      - run:
+          name: "Set Python Version"
+          command: pyenv global 3.7.0
+      - run:
+          name: "Build Docker"
+          command: |
+            docker build -t fake-service .
+            docker run fake-service
+            docker run docker run --rm -p 8089:8089 -p 9098:9098 -p 9099:9099 -p 1234:1234 verygood/satellite
+            curl https://echo.apps.verygood.systems/post -k -x localhost:9099 -H "Content-type: application/json" -d '{"credit-card": "4111 1111 1111 1111"}'
+            curl localhost:8000 -H "Content-type: application/json" -d '{"credit-card": "test payload"}'
+
+workflows:
+  version: 2
+  test_and_build:
+    jobs:
+      - test
