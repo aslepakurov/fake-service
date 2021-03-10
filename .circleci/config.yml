@@ -18,7 +18,6 @@ jobs:
           command: |
             docker build -t fake-service .
             docker-compose build
-#            docker-compose up --exit-code-from test test
             docker-compose up -d fake-service
             docker-compose up -d satellite
             ./test.sh
