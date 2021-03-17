@@ -8,7 +8,7 @@ async def health():
     return "OK"
 
 
-@app.post("/payload1")
+@app.post("/payload")
 async def payload(request: Request):
     print("Some additional funtionality")
     body_str = await request.body()
