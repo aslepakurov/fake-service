@@ -8,7 +8,7 @@ async def health():
     return "OK"
 
 
-@app.post("/payload")
+@app.post("/invalid")
 async def payload(request: Request):
     body_str = await request.body()
     return str(body_str.decode("UTF-8"))
